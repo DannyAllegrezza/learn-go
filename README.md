@@ -17,12 +17,12 @@ No surprises here. The official website has a bunch of helpful resources for get
 
 ## 📓 Journal 
 
-#### 8/23/22
+#### Day 1 7/23/22
   - [x] Setup this repository
   - [x] Setup learning plan and collect resources
   - [x] Create a hello world program in `go` and play around with running vs building
 
-Q: What does it take to print ["hello world"](go-by-example/1-hello-world.go) in go?
+**Q: What does it take to print ["hello world"](go-by-example/1-hello-world.go) in go?**
 
 ```go
 package main
@@ -61,3 +61,8 @@ As it turns out, yes, there is significance. For more info, see the [program exe
   * `func main() { ... }`
 
 Program execution begins by initializing the `main` package and then invoking the function `main()`. When that function invocation returns, the program exits. It does not wait for other (non-main) goroutines to complete.
+
+
+### Day 2 
+
+I've been finding the official Go resources to be the most informative. Their website covers beginner to advanced topics. Overall, learning Go has been a mostly painless transition based on my existing language experience.
