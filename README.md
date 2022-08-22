@@ -66,3 +66,20 @@ Program execution begins by initializing the `main` package and then invoking th
 ### Day 2 
 
 I've been finding the official Go resources to be the most informative. Their website covers beginner to advanced topics. Overall, learning Go has been a mostly painless transition based on my existing language experience.
+
+Right now, I'm juggling between the official Go documentation, https://gobyexample.com and "The Go Programming Language" book.
+
+#### TIL
+
+Slices are like a dynamically sized sequence `s` of array elements where individual elements can be accessed as `s[i]` and a contiguous subsequence as `s[m:n]`. The number of elements is given by `len(s)`.
+
+In [echo3.go](go-programming-language/echo3.go), we built a little clone of the Unix `echo` command, working our way up to the final implementation in `echo3`. One thing I found interesting was this syntax:
+
+`os.Args[1:]`
+
+* `os.Args` is a _`slice`_ of strings
+* The first element of this particular slice is always the name of the command itself, and the other elements are the command line arguments that were passed to the program when it started execution
+  
+This is shorthand for `os.Args[1:len(os.Args)]`. If m or n is omitted, it defaults to 0 or len(s) respectively, so we can abbreviate the desired slice as `os.Args[1:]`.
+
+We used this as a way to skip the 1st element in the slice and just loop or range through the rest of the elements.
