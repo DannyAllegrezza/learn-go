@@ -17,7 +17,7 @@ No surprises here. The official website has a bunch of helpful resources for get
 
 ## 📓 Journal 
 
-#### Day 1 7/23/22
+### Day 1 7/23/22
   - [x] Setup this repository
   - [x] Setup learning plan and collect resources
   - [x] Create a hello world program in `go` and play around with running vs building
@@ -69,9 +69,9 @@ I've been finding the official Go resources to be the most informative. Their we
 
 Right now, I'm juggling between the official Go documentation, https://gobyexample.com and "The Go Programming Language" book.
 
-#### TIL
+### TIL
 
-Slices are like a dynamically sized sequence `s` of array elements where individual elements can be accessed as `s[i]` and a contiguous subsequence as `s[m:n]`. The number of elements is given by `len(s)`.
+**Slices** are like a dynamically sized sequence `s` of array elements where individual elements can be accessed as `s[i]` and a contiguous subsequence as `s[m:n]`. The number of elements is given by `len(s)`.
 
 In [echo3.go](go-programming-language/echo3.go), we built a little clone of the Unix `echo` command, working our way up to the final implementation in `echo3`. One thing I found interesting was this syntax:
 
@@ -80,6 +80,6 @@ In [echo3.go](go-programming-language/echo3.go), we built a little clone of the 
 * `os.Args` is a _`slice`_ of strings
 * The first element of this particular slice is always the name of the command itself, and the other elements are the command line arguments that were passed to the program when it started execution
   
-This is shorthand for `os.Args[1:len(os.Args)]`. If m or n is omitted, it defaults to 0 or len(s) respectively, so we can abbreviate the desired slice as `os.Args[1:]`.
+This is shorthand for `os.Args[1:len(os.Args)]`. If `m` or `n` is omitted, it defaults to 0 or len(s) respectively, so we can abbreviate the desired slice as `os.Args[1:]`.
 
-We used this as a way to skip the 1st element in the slice and just loop or range through the rest of the elements.
+> We used this as a way to skip the 1st element in the slice and just loop or range through the rest of the elements.ß
