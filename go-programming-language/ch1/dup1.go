@@ -1,3 +1,12 @@
+// Dup1 prints the text of each line that appears more than
+// once in the standard input stream preceded by its count
+//
+// go run dup1
+// hey
+// hey
+// hi
+// <terminate with ctrl+d
+// 2     hey
 package main
 
 import (
@@ -19,7 +28,8 @@ func main() {
 	// now that we're done, display results to the user
 	for line, n := range counts {
 		if n > 1 {
-			fmt.Printf("%d\t%s\n", n, line)
+			//fmt.Printf("%d\t%s\n", n, line)
+			fmt.Println(n, line)
 		}
 	}
 }
