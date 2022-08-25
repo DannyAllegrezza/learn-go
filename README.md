@@ -73,7 +73,7 @@ Right now, I'm juggling between the official Go documentation, https://gobyexamp
 
 **Slices** are like a dynamically sized sequence `s` of array elements where individual elements can be accessed as `s[i]` and a contiguous subsequence as `s[m:n]`. The number of elements is given by `len(s)`.
 
-In [echo3.go](go-programming-language/echo3.go), we built a little clone of the Unix `echo` command, working our way up to the final implementation in `echo3`. One thing I found interesting was this syntax:
+In [echo3.go](go-programming-language/ch1/echo3.go), we built a little clone of the Unix `echo` command, working our way up to the final implementation in `echo3`. One thing I found interesting was this syntax:
 
 `os.Args[1:]`
 
@@ -83,3 +83,45 @@ In [echo3.go](go-programming-language/echo3.go), we built a little clone of the 
 This is shorthand for `os.Args[1:len(os.Args)]`. If `m` or `n` is omitted, it defaults to 0 or len(s) respectively, so we can abbreviate the desired slice as `os.Args[1:]`.
 
 > We used this as a way to skip the 1st element in the slice and just loop or range through the rest of the elements.ß
+
+
+### TIL - formatting
+
+In [dup1.go](go-programming-language/ch1/dup1.go) we explore working with `stdin` and formatting strings in Go.
+
+The [fmt](https://pkg.go.dev/fmt) package implements formatted I/O with functions analogous to C's printf and scanf. The format 'verbs' are derived from C's but are simpler.
+
+There a ton of verbs, but the most common ones are as follows:
+
+```
+%v	the value in a default format
+	when printing structs, the plus flag (%+v) adds field names
+%#v	a Go-syntax representation of the value
+%T	a Go-syntax representation of the type of the value
+%%	a literal percent sign; consumes no value
+```
+
+The most common use of formatting is to print to a terminal window through `stdout`...
+
+```go
+func Print(a ...interface{}) (n int, err error)
+func Printf(format string, a ...interface{}) (n int, err error)
+func Println(a ...interface{}) (n int, err error)
+```
+
+* [Print()](https://pkg.go.dev/fmt#Print) "Print formats using the default formats for its operands and writes to standard output. Spaces are added between operands when neither is a string. It returns the number of bytes written and any write error encountered."
+
+* [Printf()](https://pkg.go.dev/fmt#Printf) formats according to a format specifier and writes to standard output. 
+
+```go
+// In dup1.go
+fmt.Printf("%d\t%s\n", n, line)
+```
+
+* [Println()](https://pkg.go.dev/fmt#Println) formats using the** default formats for its operands** and writes to standard output. Spaces are **always added between operands** and a **newline** is appended. It also returns the number of bytes written and any write error that was encountered.
+
+
+```go
+// In dup1.go
+fmt.Println(n, line)
+```
