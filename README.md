@@ -82,7 +82,7 @@ In [echo3.go](go-programming-language/ch1/echo3.go), we built a little clone of 
   
 This is shorthand for `os.Args[1:len(os.Args)]`. If `m` or `n` is omitted, it defaults to 0 or len(s) respectively, so we can abbreviate the desired slice as `os.Args[1:]`.
 
-> We used this as a way to skip the 1st element in the slice and just loop or range through the rest of the elements.ß
+> We used this as a way to skip the 1st element in the slice and just loop or range through the rest of the elements.
 
 
 ### TIL - formatting
@@ -109,7 +109,7 @@ func Printf(format string, a ...interface{}) (n int, err error)
 func Println(a ...interface{}) (n int, err error)
 ```
 
-* [Print()](https://pkg.go.dev/fmt#Print) "Print formats using the default formats for its operands and writes to standard output. Spaces are added between operands when neither is a string. It returns the number of bytes written and any write error encountered."
+* [Print()](https://pkg.go.dev/fmt#Print) formats using the default formats for its operands and writes to standard output. Spaces are added between operands when neither is a string. It returns the number of bytes written and any write error encountered.
 
 * [Printf()](https://pkg.go.dev/fmt#Printf) formats according to a format specifier and writes to standard output. 
 
@@ -125,3 +125,4 @@ fmt.Printf("%d\t%s\n", n, line)
 // In dup1.go
 fmt.Println(n, line)
 ```
+
