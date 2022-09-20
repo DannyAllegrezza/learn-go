@@ -5,10 +5,11 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"log"
 	"net/http"
 	"os"
+	"strings"
 )
 
 func main() {
@@ -18,17 +19,35 @@ func main() {
 }
 
 func fetchUrl(url string) {
+	// exercise 1.8 - check for http:// prefix
+	if !hasHttpPrefix(url) {
+		url = "http://" + url
+	}
+
+	fmt.Println("Fetching URL ", url)
 	response, err := http.Get(url)
 
 	if err != nil {
 		log.Fatalln("fetch failure: ", err)
 	}
 
-	body, err := ioutil.ReadAll(response.Body)
-	response.Body.Close()
+	// exercise 1.6 - read response into a buffer
+	// body, err := ioutil.ReadAll(response.Body)
+	// response.Body.Close()
+	//
+	// if err != nil {
+	// 	fmt.Println("fetch: reading", url, err)
+	// }
+	// fmt.Printf("%s", body)
 
-	if err != nil {
-		fmt.Println("fetch: reading", url, err)
+	// exercise 1.7 - use io.Copy() instead
+	if _, err := io.Copy(os.Stdout, response.Body); err != nil {
+		log.Fatal("fetch: reading", url, err)
 	}
-	fmt.Printf("%s", body)
+
+	fmt.Println("\nstatus code:", response.StatusCode)
+}
+
+func hasHttpPrefix(url string) bool {
+	return strings.HasPrefix(url, "http://")
 }
