@@ -19,6 +19,7 @@ func main() {
 }
 
 func fetchUrl(url string) {
+	// exercise 1.8 - check for http:// prefix
 	if !hasHttpPrefix(url) {
 		url = "http://" + url
 	}
@@ -43,6 +44,8 @@ func fetchUrl(url string) {
 	if _, err := io.Copy(os.Stdout, response.Body); err != nil {
 		log.Fatal("fetch: reading", url, err)
 	}
+
+	fmt.Println("\nstatus code:", response.StatusCode)
 }
 
 func hasHttpPrefix(url string) bool {
