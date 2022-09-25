@@ -4,8 +4,11 @@ package github
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"time"
+
+	"example.com/context/userip"
 )
 
 type UserStarredResults []UserStarredResult
@@ -110,6 +113,10 @@ type UserStarredResult struct {
 
 // GetUsersStarredResults returns a Github users stars by calling the GitHub REST API
 func GetUsersStarredResults(ctx context.Context, userName string) (UserStarredResults, error) {
+
+	if userIP, ok := userip.FromContext(ctx); ok {
+		fmt.Println("Users IP: ", userIP)
+	}
 
 	response, err := http.Get("https://api.github.com/users/" + userName + "/starred")
 
